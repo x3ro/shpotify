@@ -29,7 +29,7 @@ showHelp () {
     echo;
     echo "Commands:";
     echo "  status             # Shows Spotify's status and current track details.";
-    echo "  play               # Play Spotify.";
+    echo "  play [uri]         # Play Spotify. Optionally play given URI.";
     echo "  pause              # Pause Spotify.";
     echo "  toggle             # Toggle Play / Pause."
     echo "  next               # Go to the next track.";
@@ -64,8 +64,15 @@ while [ $# -gt 0 ]; do
             fi
             break ;;
 
-        "play"    ) echo $bold$green"Playing Spotify.";
-            osascript -e 'tell application "Spotify" to play';
+        "play"    )
+            url=$2;
+            if [ $2 = "" ]; then
+                echo $bold$green"Playing Spotify.";
+                osascript -e 'tell application "Spotify" to play';
+            else
+                echo $bold$green"Playing $2 in Spotify";
+                osascript -e 'tell application "Spotify" to play track"'$2'"' ;
+            fi
             break ;;
 
         "pause"    ) echo $bold$green"Pausing Spotify.";

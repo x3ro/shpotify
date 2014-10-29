@@ -17,7 +17,7 @@ from other machines using SSH. In order to use it:
    where <option> is one of
 
    * status   = Shows Spotify's status, current track details.
-   * play     = Start playing Spotify.
+   * play #   = Start playing Spotify. May be passed a URI to play.
    * pause    = Pause Spotify.
    * toggle   = Toggle play/pause state of Spotify.
    * next     = Go to the next track.
